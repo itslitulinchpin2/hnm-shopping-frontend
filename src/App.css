@@ -1,0 +1,24 @@
+.loginButton{
+    display:flex;
+    justify-content: flex-end;
+    margin:20px;
+}
+.logoSection{
+    display:flex;
+    justify-content: center
+}
+.menuList{
+    display: flex;
+    list-style-type: none;
+}
+.menuList li{
+    padding:10px;
+}
+.menuArea{
+    display:flex;
+    justify-content: center;
+}
+.searchBar{
+    border: 0.5px solid black
+}
+
