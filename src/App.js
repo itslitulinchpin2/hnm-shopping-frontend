@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import {Routes, Route, Link, Navigate} from 'react-router-dom'
+import {useState, useEffect} from 'react';
+import ProductDetail from './pages/productDetail';
+import ProductAll from './pages/productAll';
+import Login from './pages/login';
+//개발큰그림
+//1. 전체상품페이지, 로그인페이지, 상품상세페이지
+//2. 전체상품페이지에서는 전체 상품 열람
+//3. 로그인버튼 ->로그인화면
+//4. 로그인 안된 경우 상품을 눌렀을때 로그인화면 이동
+//5. 로그인 된 경우 상품 눌렀을때 상품상세페이지 이동
+//6. 로그아웃버튼 -> 로그아웃완료. 상품상세 열람불가
+//7. 로그인 유무에 따라 로그인/아웃 버튼 바뀜
+//8. 검색창 구현
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <Routes>
+      <Route path="/" element={<ProductAll></ProductAll>}></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
+      <Route path="/product/:id" element={<ProductDetail></ProductDetail>}></Route>
+    </Routes>
+   </div>
   );
 }
 
