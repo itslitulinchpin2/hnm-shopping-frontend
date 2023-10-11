@@ -23,10 +23,7 @@ function App() {
 
   return (
    <div>
-    <Navbar>
-
-
-    </Navbar>
+    <Navbar></Navbar>
     <Routes>
       <Route path="/" element={<ProductAll></ProductAll>}></Route>
       <Route path="/login" element={<Login></Login>}></Route>
