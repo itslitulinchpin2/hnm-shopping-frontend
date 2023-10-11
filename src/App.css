@@ -19,6 +19,9 @@
     justify-content: center;
 }
 .searchBar{
-    border: 0.5px solid black
+    
+    display:flex;
+    height:44px;
+    padding-left: 50px;
 }
 

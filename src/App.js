@@ -6,6 +6,8 @@ import ProductDetail from './pages/productDetail';
 import ProductAll from './pages/productAll';
 import Login from './pages/login';
 import Navbar from './components/navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //개발큰그림
 //1. 전체상품페이지, 로그인페이지, 상품상세페이지
 //1-1.네비게이션바 구현
