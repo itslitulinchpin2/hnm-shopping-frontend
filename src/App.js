@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-
+const [authenticate,setAuthenticate]= useState(false); //true이면 로그인이 된 상태.
 
   return (
    <div>

@@ -2,6 +2,8 @@
     display:flex;
     justify-content: flex-end;
     margin:20px;
+    cursor: pointer;
+
 }
 .logoSection{
     display:flex;
