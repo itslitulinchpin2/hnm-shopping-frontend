@@ -3,12 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {Link,useNavigate, Navigate} from 'react-router-dom'
-const Navbar = () => {
+import {useState} from'react';
+
+const Navbar = ({authenticate, setAuthenticate}) => {
 
     const navigate = useNavigate();
     const menuList = ['여성','Divide','남성','신생아/유아','아동','H&M Home','Sale','지속가능성']
     const goToLogin=()=>{
-        navigate("./login")
+        if (authenticate==false){
+        navigate("./login");
+        } else if (authenticate==true){
+            setAuthenticate(false);
+            navigate("/");
+            
+        }
     }
     const search = (event)=>{
         if(event.key=="Enter"){
@@ -19,6 +27,10 @@ const Navbar = () => {
             navigate(`/?q=${keyword}`)
         }
     }
+    const gotomain=()=>{
+        navigate("/")
+    }
+
   return (
     <div>
         <div>
@@ -26,12 +38,12 @@ const Navbar = () => {
                 onClick={goToLogin}>
                 <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
                 
-                <div>로그인</div>
+                <div>{authenticate==false ? "로그인" : "로그아웃"}</div>
                 
             </div>
         </div>
 
-        <div className="logoSection">
+        <div className="logoSection" onClick={gotomain}>
             <img width={100} 
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"></img>
         </div>
