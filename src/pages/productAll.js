@@ -2,14 +2,17 @@ import React from 'react'
 import {useState, useEffect} from'react'
 import ProductCard from '../components/productCard'
 import {Container, Row, Col} from "react-bootstrap"
-
+import { useSearchParams } from 'react-router-dom'
 
 const ProductAll = () => {
 
   const [productList,setProductList]=useState([])
+  const [query,setQuery]=useSearchParams();
+
   const getProducts = async () =>{
-    
-    let url = "http://localhost:5001/products"
+    let searchQuery=query.get('q') || ""; //쿼리가 없으면 빈문자열
+    console.log("쿼리값은, ", searchQuery);
+    let url = `http://localhost:5001/products?q=${searchQuery}`
     let response = await fetch(url);
     let data = await response.json()
     setProductList(data);
@@ -17,7 +20,10 @@ const ProductAll = () => {
 
   useEffect(()=>{
     getProducts();
-  },[])
+  },[query])
+
+  
+
 
   return (
     <div>
