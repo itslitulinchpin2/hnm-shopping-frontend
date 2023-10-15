@@ -3,19 +3,24 @@ import {useState, useEffect} from'react'
 import ProductCard from '../components/productCard'
 import {Container, Row, Col} from "react-bootstrap"
 import { useSearchParams } from 'react-router-dom'
+import { productAction } from '../redux/actions/productAction'
+import { useDispatch,useSelector } from 'react-redux'
 
 const ProductAll = () => {
 
-  const [productList,setProductList]=useState([])
-  const [query,setQuery]=useSearchParams();
+  const dispatch = useDispatch();
 
+  const productList=useSelector((state)=>state.productList)
+  const [query,setQuery]=useSearchParams();
+  
   const getProducts = async () =>{
     let searchQuery=query.get('q') || ""; //쿼리가 없으면 빈문자열
     console.log("쿼리값은, ", searchQuery);
-    let url = `https://my-json-server.typicode.com/itslitulinchpin2/hnm-shopping-frontend/products?q=${searchQuery}`
-    let response = await fetch(url);
-    let data = await response.json()
-    setProductList(data);
+    
+    //dispatch가 action을 던져 바로 리듀서로 가지 않고,
+    //미들웨어를 거치도록 해야한다. 비동기 처리를 위함.
+    dispatch(productAction.getProducts(searchQuery));
+
   }
 
   useEffect(()=>{
