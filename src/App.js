@@ -8,6 +8,7 @@ import Login from './pages/login';
 import Navbar from './components/navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRoute from './route';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 //개발큰그림
 //1. 전체상품페이지, 로그인페이지, 상품상세페이지
 //1-1.네비게이션바 구현
@@ -21,8 +22,8 @@ import PrivateRoute from './route';
 
 function App() {
 
-const [authenticate,setAuthenticate]= useState(false); //true이면 로그인이 된 상태.
-
+//const [authenticate,setAuthenticate]= useState(false); //true이면 로그인이 된 상태.
+const [authenticate,setAuthenticate] = useState(useSelector(state=>state.auth.authenticate));
 useEffect(()=>{
   console.log("로그인상황",authenticate)
 },[authenticate])
@@ -33,8 +34,8 @@ useEffect(()=>{
     <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}></Navbar>
     <Routes>
       <Route path="/" element={<ProductAll></ProductAll>}></Route>
-      <Route path="/login" element={<Login setAuthenticate={setAuthenticate}></Login>}></Route>
-      <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}></PrivateRoute>}></Route>
+      <Route path="/login" element={<Login authenticate={authenticate} setAuthenticate={setAuthenticate} ></Login>}></Route>
+      <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} setAuthenticate={setAuthenticate}></PrivateRoute>}></Route>
     </Routes>
    </div>
   );

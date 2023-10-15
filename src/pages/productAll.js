@@ -16,7 +16,7 @@ const ProductAll = () => {
   
   const getProducts = async () =>{
     let searchQuery=query.get('q') || ""; //쿼리가 없으면 빈문자열
-    console.log("쿼리값은, ", searchQuery);
+    //console.log("쿼리값은, ", searchQuery);
     
     //dispatch가 action을 던져 바로 리듀서로 가지 않고,
     //미들웨어를 거치도록 해야한다. 비동기 처리를 위함.

@@ -6,7 +6,7 @@ function getProducts(searchQuery){
         let response = await fetch(url);
         let data = await response.json()
         //setProductList(data);
-        console.log(data);
+        //console.log(data);
         //잘 받았으니 이제 리듀서로 보내자.
         dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}})
     }

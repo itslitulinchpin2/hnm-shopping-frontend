@@ -5,7 +5,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {Link,useNavigate, Navigate} from 'react-router-dom'
 import {useState} from'react';
 
-const Navbar = ({authenticate, setAuthenticate}) => {
+const Navbar = ({authenticate,setAuthenticate}) => {
 
     const navigate = useNavigate();
     const menuList = ['여성','Divide','남성','신생아/유아','아동','H&M Home','Sale','지속가능성']
@@ -13,6 +13,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
         if (authenticate==false){
         navigate("./login");
         } else if (authenticate==true){
+            console.log("로그아웃됩니다.");
             setAuthenticate(false);
             navigate("/");
             

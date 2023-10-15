@@ -2,11 +2,13 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import {Button,Form} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { authenticateAction } from '../redux/actions/authenticateAction';
 import { useState } from 'react';
 
-const Login = ({setAuthenticate}) => {
+const Login = ({authenticate,setAuthenticate}) => {
+  
+  
   const [id,setId]=useState('')
   const [password,setPassword]=useState('')
   const navigate = useNavigate();
@@ -14,8 +16,9 @@ const Login = ({setAuthenticate}) => {
   
   const loginUser=(event)=>{
     event.preventDefault();
-    console.log("hi");
+    console.log("전달되는값: ",id,password);
     dispatch(authenticateAction.login(id,password))
+    setAuthenticate(true);
     navigate('/')
 
     
