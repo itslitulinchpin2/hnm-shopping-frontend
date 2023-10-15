@@ -23,7 +23,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 function App() {
 
 //const [authenticate,setAuthenticate]= useState(false); //true이면 로그인이 된 상태.
-const [authenticate,setAuthenticate] = useState(useSelector(state=>state.auth.authenticate));
+//const [authenticate,setAuthenticate] = useState();
+const authenticate = useSelector(state=>state.auth.authenticate)
 useEffect(()=>{
   console.log("로그인상황",authenticate)
 },[authenticate])
@@ -31,11 +32,11 @@ useEffect(()=>{
 
   return (
    <div>
-    <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}></Navbar>
+    <Navbar authenticate={authenticate} ></Navbar>
     <Routes>
       <Route path="/" element={<ProductAll></ProductAll>}></Route>
-      <Route path="/login" element={<Login authenticate={authenticate} setAuthenticate={setAuthenticate} ></Login>}></Route>
-      <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} setAuthenticate={setAuthenticate}></PrivateRoute>}></Route>
+      <Route path="/login" element={<Login authenticate={authenticate}  ></Login>}></Route>
+      <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} ></PrivateRoute>}></Route>
     </Routes>
    </div>
   );

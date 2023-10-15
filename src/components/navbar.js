@@ -4,9 +4,10 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {Link,useNavigate, Navigate} from 'react-router-dom'
 import {useState} from'react';
-
+import { useDispatch } from 'react-redux'
+import { authenticateAction } from '../redux/actions/authenticateAction'
 const Navbar = ({authenticate,setAuthenticate}) => {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const menuList = ['여성','Divide','남성','신생아/유아','아동','H&M Home','Sale','지속가능성']
     const goToLogin=()=>{
@@ -14,7 +15,7 @@ const Navbar = ({authenticate,setAuthenticate}) => {
         navigate("./login");
         } else if (authenticate==true){
             console.log("로그아웃됩니다.");
-            setAuthenticate(false);
+            dispatch(authenticateAction.login())
             navigate("/");
             
         }

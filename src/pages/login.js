@@ -18,7 +18,6 @@ const Login = ({authenticate,setAuthenticate}) => {
     event.preventDefault();
     console.log("전달되는값: ",id,password);
     dispatch(authenticateAction.login(id,password))
-    setAuthenticate(true);
     navigate('/')
 
     
