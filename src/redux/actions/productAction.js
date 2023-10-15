@@ -1,7 +1,5 @@
 function getProducts(searchQuery){
     
-    
-    
     //action creator는 함수를 리턴한다.
     return async (dispatch,getState)=>{
         let url = `https://my-json-server.typicode.com/itslitulinchpin2/hnm-shopping-frontend/products?q=${searchQuery}`

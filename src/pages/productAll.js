@@ -3,6 +3,7 @@ import {useState, useEffect} from'react'
 import ProductCard from '../components/productCard'
 import {Container, Row, Col} from "react-bootstrap"
 import { useSearchParams } from 'react-router-dom'
+//객체를 가져올때는 {}를 써야함.
 import { productAction } from '../redux/actions/productAction'
 import { useDispatch,useSelector } from 'react-redux'
 
@@ -10,7 +11,7 @@ const ProductAll = () => {
 
   const dispatch = useDispatch();
 
-  const productList=useSelector((state)=>state.productList)
+  const productList=useSelector((state)=>state.product.productList)
   const [query,setQuery]=useSearchParams();
   
   const getProducts = async () =>{
